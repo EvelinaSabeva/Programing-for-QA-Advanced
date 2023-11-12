@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Unit Testing Exercise Strings and Regular Expressions/TestApp/bin/Debug/net6.0
+/Unit Testing Exercise Strings and Regular Expressions/TestApp/obj
+/Unit Testing Exercise Strings and Regular Expressions/TestApp.UnitTests/bin
+/Unit Testing Exercise Strings and Regular Expressions/TestApp.UnitTests/obj
