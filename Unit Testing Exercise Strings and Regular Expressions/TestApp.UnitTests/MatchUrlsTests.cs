@@ -6,16 +6,19 @@ namespace TestApp.UnitTests;
 
 public class MatchUrlsTests
 {
-    // TODO: finish the test
+    
     [Test]
     public void Test_ExtractUrls_EmptyText_ReturnsEmptyList()
     {
         // Arrange
         string text = "";
+        List<string> expected = new List<string>();
 
         // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
 
         // Assert
+        Assert.That(result, Is.Empty);
     }
 
     // TODO: finish the test
@@ -23,28 +26,55 @@ public class MatchUrlsTests
     public void Test_ExtractUrls_NoUrlsInText_ReturnsEmptyList()
     {
         // Arrange
+        string text = " No valid URLs!!!";
+        
 
         // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
 
         // Assert
-        //Assert.That(result, Is.Empty);
+        Assert.That(result, Is.Empty);
     }
 
     [Test]
     public void Test_ExtractUrls_SingleUrlInText_ReturnsSingleUrl()
     {
-        // TODO: finish the test
+        // Arrange
+        string text = "Single URL: https://softuni.bg";
+        List<string> expected = new() {"https://softuni.bg"};
+
+        // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
+
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     [Test]
     public void Test_ExtractUrls_MultipleUrlsInText_ReturnsAllUrls()
     {
-        // TODO: finish the test
+        // Arrange
+        string text = "Multiple URLs:https://softuni.bg, https://creative.softuni.bg";
+        List<string> expected = new() {"https://softuni.bg", "https://creative.softuni.bg"};
+
+        // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
+
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
     }
 
     [Test]
     public void Test_ExtractUrls_UrlsInQuotationMarks_ReturnsUrlsInQuotationMarks()
     {
-        // TODO: finish the test
+        // Arrange
+        string text = "Single URL: \"https://softuni.bg/about\"";
+        List<string> expected = new() {"https://softuni.bg" };
+
+        // Act
+        List<string> result = MatchUrls.ExtractUrls(text);
+
+        // Assert
+        Assert.That(result, Is.EqualTo(expected));
     }
 }
