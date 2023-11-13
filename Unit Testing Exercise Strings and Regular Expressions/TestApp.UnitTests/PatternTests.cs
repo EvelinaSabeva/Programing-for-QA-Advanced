@@ -4,11 +4,11 @@ namespace TestApp.UnitTests;
 
 public class PatternTests
 {
-    // TODO: finish the test cases
-    //[TestCase()]
-    //[TestCase()]
-    //[TestCase()]
-    public void Test_GeneratePatternedString_ValidInput_ReturnsExpectedResult(string input, 
+
+    [TestCase("abcde", 2, "aBcDeaBcDe")]
+    [TestCase("AbCdE", 1, "aBcDe")]
+    [TestCase("abcde", 10, "aBcDeaBcDeaBcDeaBcDeaBcDeaBcDeaBcDeaBcDeaBcDeaBcDe")]
+    public void Test_GeneratePatternedString_ValidInput_ReturnsExpectedResult(string input,
         int repetitionFactor, string expected)
     {
         // Arrange
@@ -23,18 +23,34 @@ public class PatternTests
     [Test]
     public void Test_GeneratePatternedString_EmptyInput_ThrowsArgumentException()
     {
-        // TODO: finish the test
+
+        // Arrange
+        string input = "";
+        int repetitionFactor = 10;
+
+        // Act & Assert
+        Assert.That(() => Pattern.GeneratePatternedString(input, repetitionFactor), Throws.ArgumentException);
     }
 
     [Test]
     public void Test_GeneratePatternedString_NegativeRepetitionFactor_ThrowsArgumentException()
     {
-        // TODO: finish the test
+        // Arrange
+        string input = "abcde";
+        int repetitionFactor = -5;
+
+        // Act & Assert
+        Assert.That(() => Pattern.GeneratePatternedString(input, repetitionFactor), Throws.ArgumentException);
     }
 
     [Test]
     public void Test_GeneratePatternedString_ZeroRepetitionFactor_ThrowsArgumentException()
     {
-        // TODO: finish the test
+        // Arrange
+        string input = "abcde";
+        int repetitionFactor = 0;
+
+        // Act & Assert
+        Assert.That(() => Pattern.GeneratePatternedString(input, repetitionFactor), Throws.ArgumentException);
     }
 }
